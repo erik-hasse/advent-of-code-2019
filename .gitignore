@@ -10,3 +10,4 @@ maven-classpath.properties
 inputs/
 .cpcache/
 .nrepl-port
+.clj-kondo/

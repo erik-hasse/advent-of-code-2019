@@ -3,7 +3,7 @@
 
 (defn parse [x]
   (->>
-    (str/split x #",")
+    (str/split (str/trim x) #",")
     (map #(Integer/parseInt %))
     vec))
 
@@ -60,18 +60,3 @@
     (init-with noun verb)
     run
     parse-output))
-
-(def part-1 (init-run-output input 12 2))
-
-part-1
-
-; part 2
-(defn find-first [pred coll]
-  (first (filter pred coll)))
-
-(def part-2 (let [[noun verb] (find-first
-                                (fn [[noun verb]] (= (init-run-output input noun verb) 19690720))
-                                (for [x (range 100) y (range 100)] [x y]))]
-              (+ (* 100 noun) verb)))
-
-part-2

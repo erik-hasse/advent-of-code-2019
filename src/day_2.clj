@@ -9,7 +9,10 @@
 part-1
 
 ; part 2
-(def part-2 (let [[noun verb] (ic/find-first
+(defn find-first [pred coll]
+  (first (filter pred coll)))
+
+(def part-2 (let [[noun verb] (find-first
                                 (fn [[noun verb]] (= (ic/init-run-output input noun verb) 19690720))
                                 (for [x (range 100) y (range 100)] [x y]))]
               (+ (* 100 noun) verb)))
